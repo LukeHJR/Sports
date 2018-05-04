@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sports.mapper.sys.SysMapper">
+
+    <select id="selectByProjectId" resultType="com.example.sports.dto.response.SchoolScoreRes"
+            parameterType="java.lang.Integer">
+      SELECT
+      b.name as name ,
+      a.sys_user_sid as sid ,
+      c.team_type as teamType ,
+      c.sys_project_id as sysProjectId,
+      c.achievement as achievement
+      FROM sys_user_student  a,
+      sys_user  b,
+      sys_grading_module  c
+      where
+      a.id = c.sys_user_student_id
+      AND
+      a.sys_user_sid = b.sid
+      AND
+      c.sys_project_id = #{id , jdbcType = INTEGER}
+      having c.sys_project_id
+      order by c.achievement desc
+      limit 0,3;
+
+  </select>
+</mapper>

@@ -1,0 +1,31 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.example.sports.conf.SysConfig",
+      "name": "sys",
+      "type": "com.example.sports.conf.SysConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.example.sports.conf.SysConfig",
+      "name": "sys.env",
+      "description": "系统环境",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.sports.conf.SysConfig",
+      "defaultValue": false,
+      "name": "sys.gen-api",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.example.sports.conf.SysConfig",
+      "defaultValue": 0,
+      "name": "sys.session-timeout",
+      "description": "session过期时间",
+      "type": "java.lang.Long"
+    }
+  ]
+}
