@@ -36,7 +36,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
         InterceptorRegistration registration = registry.addInterceptor(loginValidateInterceptor);
         registration.excludePathPatterns("/**/applicationJoin", "/**/login", "/**/htmlSelectOneRecord", "/**/htmlSelectOneFaqRecord", "/**/checkPhone", "h5/*", "/**/forgetPassword", "/**/resetPassword", "/**/resetPassword", "/**/register", "/", "/**/sendMessage", "/**/notify",
-                "/**/*.html", "/swagger-resources/**", "/webjars/**", "/v2/api-docs", "/**/*.js", "/**/*.css", "/**/*.png", "/**/*.jpg", "/**/checkMessage", "/**/vendorApply", "/wx/authorize/*", "/pay/**");
+                "/**/*.html", "/swagger-resources/**", "/webjars/**", "/v2/api-docs", "/**/*.js", "/**/*.css", "/**/*.png", "/**/*.jpg", "/**/checkMessage", "/**/vendorApply");
 
     }
 
