@@ -25,7 +25,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
                 //为controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.example.sports.Controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.sports.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
