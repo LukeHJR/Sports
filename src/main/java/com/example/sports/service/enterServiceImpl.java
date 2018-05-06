@@ -3,7 +3,6 @@ package com.example.sports.service;
 import com.example.sports.dto.request.EnterInfoRequest;
 import com.example.sports.dto.request.EnterRequest;
 import com.example.sports.dto.response.EnterInfoRes;
-import com.example.sports.dto.response.RoleRes;
 import com.example.sports.mapper.SysCollegeMapper;
 import com.example.sports.mapper.SysProjectMapper;
 import com.example.sports.mapper.SysProjectSignMapper;
@@ -29,7 +28,7 @@ import java.util.List;
  * @date: 2018-05-02
  */
 @Service
-public class enterServiceImpl implements enterService{
+public class EnterServiceImpl implements EnterService {
 
     @Autowired
     private SysProjectSignMapper sysProjectSignMapper;
@@ -58,19 +57,19 @@ public class enterServiceImpl implements enterService{
 
         SysProjectSignExample example = new SysProjectSignExample();
         SysProjectSignExample.Criteria criteria = example.createCriteria();
-        if (StringUtils.isNotBlank(request.getSysUserSid())){
+        if (StringUtils.isNotBlank(request.getSysUserSid())) {
             criteria.andSysUserSidEqualTo(request.getSysUserSid());
         }
-        if (request.getCollegeId() != null && request.getCollegeId() > 0){
+        if (request.getCollegeId() != null && request.getCollegeId() > 0) {
             criteria.andSysCollegeIdEqualTo(request.getCollegeId());
         }
         List<EnterInfoRes> res = new ArrayList<>();//新建实体类List
         PageHelper.startPage(request.getPageNum(), request.getPageSize(), true);//启动分页，接下来第一条为分页对象
         List<SysProjectSign> sysProjectSignList = sysProjectSignMapper.selectByExample(example);
         PageInfo<EnterInfoRes> resPage = new PageInfo(sysProjectSignList);//放入pageInfo工具类中
-        for (SysProjectSign sysProjectSign : sysProjectSignList){
+        for (SysProjectSign sysProjectSign : sysProjectSignList) {
             EnterInfoRes dto = new EnterInfoRes();
-            SysCollege sysCollege =sysCollegeMapper.selectByPrimaryKey(Long.valueOf(request.getCollegeId()));
+            SysCollege sysCollege = sysCollegeMapper.selectByPrimaryKey(Long.valueOf(request.getCollegeId()));
             dto.setCollgeName(Integer.valueOf(sysCollege.getName()));
 
             dto.setSysUserSid(sysProjectSign.getSysUserSid());
@@ -78,7 +77,7 @@ public class enterServiceImpl implements enterService{
             SysUserExample.Criteria criteria1 = example1.createCriteria();
             criteria1.andSidEqualTo(sysProjectSign.getSysUserSid());
             List<SysUser> sysUser = sysUserMapper.selectByExample(example1);
-            if (sysUser.size() > 0 && sysUser != null){
+            if (sysUser.size() > 0 && sysUser != null) {
                 dto.setStudentName(sysUser.get(0).getName());
             }
             dto.setSysProject(sysProjectMapper.selectByPrimaryKey(sysProjectSign.getSysProjectId().longValue()).getName());

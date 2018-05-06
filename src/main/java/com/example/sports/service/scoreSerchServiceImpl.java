@@ -24,7 +24,7 @@ import java.util.List;
  * @date: 2018-05-02
  */
 @Service
-public class scoreSerchServiceImpl implements scoreSerchService{
+public class ScoreSerchServiceImpl implements ScoreSerchService {
 
     @Autowired
     private SysUserStudentMapper sysUserStudentMapper;
@@ -42,14 +42,14 @@ public class scoreSerchServiceImpl implements scoreSerchService{
     @Override
     public PageInfo<ScoreSerchRes> studentInfo(PageRequestBean requestBean, Long sid) {
 
-        if (sid != null && sid > 0){
+        if (sid != null && sid > 0) {
             SysUserStudentExample studentExample = new SysUserStudentExample();
             SysUserStudentExample.Criteria criteriaS = studentExample.createCriteria();
             criteriaS.andSysUserSidEqualTo(String.valueOf(sid));
             List<SysUserStudent> sysUserStudents = sysUserStudentMapper.selectByExample(studentExample);
             String id = null;
-            if (sysUserStudents.size() > 0){
-                id =  sysUserStudents.get(0).getSysUserSid();//学生账号表id
+            if (sysUserStudents.size() > 0) {
+                id = sysUserStudents.get(0).getSysUserSid();//学生账号表id
             }
 
             SysGradingModuleExample example = new SysGradingModuleExample();
@@ -60,7 +60,7 @@ public class scoreSerchServiceImpl implements scoreSerchService{
             PageHelper.startPage(requestBean.getPageNum(), requestBean.getPageSize(), true);
             List<SysGradingModule> sysGradingModules = sysGradingModuleMapper.selectByExample(example);
             PageInfo<ScoreSerchRes> pageInfo = new PageInfo(sysGradingModules);
-            for (SysGradingModule sysGradingModule : sysGradingModules){
+            for (SysGradingModule sysGradingModule : sysGradingModules) {
                 ScoreSerchRes dto = new ScoreSerchRes();
                 dto.setSportType(sysGradingModule.getSportType());
                 dto.setAchievement(sysGradingModule.getAchievement());
@@ -84,7 +84,7 @@ public class scoreSerchServiceImpl implements scoreSerchService{
 
     @Override
     public PageInfo<ScoreSerchRes> collegeInfo(PageRequestBean requestBean, Long collegeId) {
-        if (collegeId != null && collegeId >0){
+        if (collegeId != null && collegeId > 0) {
             SysUserStudentExample studentExample = new SysUserStudentExample();
             SysUserStudentExample.Criteria criteriaS = studentExample.createCriteria();
             criteriaS.andSysCollegeEqualTo(collegeId.intValue());//学院号
@@ -92,9 +92,9 @@ public class scoreSerchServiceImpl implements scoreSerchService{
             String sid = null;
             String suserid = null;
             String collegeName = null;
-            for (int i = 0; sysUserStudents.size() > 0 ;i++){
+            for (int i = 0; sysUserStudents.size() > 0; i++) {
                 sid = sysUserStudents.get(i).getSysUserSid();//学号
-                suserid =String.valueOf(sysUserStudents.get(i).getId());//学生账号表id
+                suserid = String.valueOf(sysUserStudents.get(i).getId());//学生账号表id
                 collegeName = sysCollegeMapper.selectByPrimaryKey(collegeId).getName();//院名
 
                 SysGradingModuleExample sysGradingModuleExample = new SysGradingModuleExample();
@@ -104,7 +104,7 @@ public class scoreSerchServiceImpl implements scoreSerchService{
                 PageHelper.startPage(requestBean.getPageNum(), requestBean.getPageSize(), true);
                 List<SysGradingModule> sysGradingModules = sysGradingModuleMapper.selectByExample(sysGradingModuleExample);
                 PageInfo<ScoreSerchRes> pageInfo = new PageInfo(sysGradingModules);
-                for (SysGradingModule sysGradingModule : sysGradingModules){
+                for (SysGradingModule sysGradingModule : sysGradingModules) {
                     ScoreSerchRes dto = new ScoreSerchRes();
                     dto.setAchievement(sysGradingModule.getAchievement());
                     dto.setSysUserSid(sid);
@@ -124,6 +124,6 @@ public class scoreSerchServiceImpl implements scoreSerchService{
             }
 
         }
-       return null;
+        return null;
     }
 }

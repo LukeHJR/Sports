@@ -21,7 +21,7 @@ import java.util.List;
  * @date: 2018-05-02
  */
 @Service
-public class projectServiceImpl implements projectService {
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private SysProjectMapper sysProjectMapper;

@@ -13,10 +13,10 @@ import java.util.List;
  * @Author huangjiarui
  * @date: 2018-05-02
  */
-public interface scoreAddService {
+public interface ScoreAddService {
 
     /**
-     * 项目
+     * 项目列表
      *
      * @param
      * @return
@@ -37,7 +37,7 @@ public interface scoreAddService {
      * @param
      * @return
      */
-    PageInfo<SchoolScoreRes> sysProjectInfo(Integer matchType , PageRequestBean request);
+    PageInfo<SchoolScoreRes> sysProjectInfo(Integer matchType, PageRequestBean request);
 
     /**
      * 成绩录入

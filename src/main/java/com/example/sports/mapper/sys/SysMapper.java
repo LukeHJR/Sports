@@ -21,4 +21,12 @@ public interface SysMapper {
      */
     List<SchoolScoreRes> selectByProjectId(@Param("id") Integer id);
 
+    /**
+     *
+     * 各学院校级记录前三
+     * @param
+     * @return
+     */
+    List<SchoolScoreRes> selectByProject();
+
 }

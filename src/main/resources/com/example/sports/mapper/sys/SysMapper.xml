@@ -24,4 +24,26 @@
       limit 0,3;
 
   </select>
+    <select id="selectByProject" resultType="com.example.sports.dto.response.SchoolScoreRes">
+      SELECT
+      b.name as name ,
+      a.sys_user_sid as sid ,
+      c.team_type as teamType ,
+      c.sys_project_id as sysProjectId,
+      c.achievement as achievement,
+      d.name as sysCollegeName
+      FROM sys_user_student  a,
+      sys_user  b,
+      sys_grading_module  c,
+      sys_college d
+      where
+      a.id = c.sys_user_student_id
+      AND
+      a.sys_user_sid = b.sid
+	  AND
+	  a.sys_college = d.id
+      having d.name
+      order by c.achievement desc
+      limit 0,3;
+    </select>
 </mapper>

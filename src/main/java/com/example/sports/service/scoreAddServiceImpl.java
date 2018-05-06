@@ -28,7 +28,7 @@ import java.util.List;
  * @date: 2018-05-02
  */
 @Service
-public class scoreAddServiceImpl implements scoreAddService {
+public class ScoreAddServiceImpl implements ScoreAddService {
 
     @Autowired
     private SysGradingModuleMapper sysGradingModuleMapper;
@@ -62,6 +62,7 @@ public class scoreAddServiceImpl implements scoreAddService {
             SysGradingModuleExample example = new SysGradingModuleExample();
             SysGradingModuleExample.Criteria criteria = example.createCriteria();
             criteria.andMatchTypeEqualTo(matchType);
+            example.setOrderByClause("achievement desc");
             List<SchoolScoreRes> res = new ArrayList<>();
             PageHelper.startPage(request.getPageNum(), request.getPageSize(), true);
             List<SysGradingModule> sysGradingModules = sysGradingModuleMapper.selectByExample(example);
@@ -71,7 +72,7 @@ public class scoreAddServiceImpl implements scoreAddService {
                 dto.setTeamType(sysGradingModule.getTeamType());
                 dto.setSportType(sysGradingModule.getSportType());
                 dto.setAchievement(sysGradingModule.getAchievement());
-                dto.setSysUserSid(sysUserStudentMapper.selectByPrimaryKey(Long.valueOf(sysGradingModule.getSysUserStudentId())).getSysUserSid());
+                dto.setSid(sysUserStudentMapper.selectByPrimaryKey(Long.valueOf(sysGradingModule.getSysUserStudentId())).getSysUserSid());
                 dto.setSysProjectId(sysGradingModule.getSysProjectId());
                 res.add(dto);
             }
@@ -118,7 +119,7 @@ public class scoreAddServiceImpl implements scoreAddService {
             SysUserStudent sysUserStudent = new SysUserStudent();
             sysUserStudent.setSysUserSid(request.getSysUserSid());
             sysUserStudent.setIntegral(score + request.getAchievement());
-            sysUserStudentMapper.updateByExampleSelective(sysUserStudent,example1);// 更新学生账号积分
+            sysUserStudentMapper.updateByExampleSelective(sysUserStudent, example1);// 更新学生账号积分
 
 
         }

@@ -10,10 +10,11 @@ import com.github.pagehelper.PageInfo;
  * @Author huangjiarui
  * @date: 2018-05-02
  */
-public interface projectService {
+public interface ProjectService {
 
     /**
      * 运动会项目列表
+     *
      * @param requestBean
      * @return
      */
@@ -21,6 +22,7 @@ public interface projectService {
 
     /**
      * 添加新的项目
+     *
      * @param
      * @return
      */
@@ -28,6 +30,7 @@ public interface projectService {
 
     /**
      * 修改项目信息
+     *
      * @param
      * @return
      */

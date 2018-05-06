@@ -10,19 +10,21 @@ import com.github.pagehelper.PageInfo;
  * @Author huangjiarui
  * @date: 2018-05-02
  */
-public interface scoreSerchService {
+public interface ScoreSerchService {
 
     /**
      * 个人成绩查询
+     *
      * @param requestBean
      * @return
      */
-    PageInfo<ScoreSerchRes> studentInfo(PageRequestBean requestBean , Long sid);
+    PageInfo<ScoreSerchRes> studentInfo(PageRequestBean requestBean, Long sid);
 
     /**
      * 院系成绩查询
+     *
      * @param requestBean
      * @return
      */
-    PageInfo<ScoreSerchRes> collegeInfo(PageRequestBean requestBean , Long collegeId);
+    PageInfo<ScoreSerchRes> collegeInfo(PageRequestBean requestBean, Long collegeId);
 }

@@ -71,21 +71,21 @@ public class SysServiceImpl implements SysService {
         if (sysUser != null) {
             throw new BusinessException(ErrorContants.PARAMS_INAVAILABLE, "此用户已注册！");
         }
-        if (sysUser == null){
+        if (sysUser == null) {
             try {
                 SysUser sysUser1 = new SysUser();
                 sysUser1.setSid(registRequest.getSid());
                 sysUser1.setName(registRequest.getName());
                 registRequest.setType((short) 3);
-                if (registRequest.getType() != 3){
+                if (registRequest.getType() != 3) {
                     throw new BusinessException(ErrorContants.PARAMS_INAVAILABLE, "❌！");
                 }
                 sysUser1.setType(registRequest.getType());
-                if (registRequest.getAvatar() != null){
+                if (registRequest.getAvatar() != null) {
                     sysUser1.setAvatar(registRequest.getAvatar());
                 }
-                if (!PasswordUtil.match(registRequest.getPassword(),PasswordUtil.encode(registRequest.getRePassword()))){
-                    throw new BusinessException(ErrorContants.PARAMS_INAVAILABLE,"❌！");
+                if (!PasswordUtil.match(registRequest.getPassword(), PasswordUtil.encode(registRequest.getRePassword()))) {
+                    throw new BusinessException(ErrorContants.PARAMS_INAVAILABLE, "❌！");
                 }
                 sysUser1.setPassword(PasswordUtil.encode(registRequest.getPassword()));
                 sysUserMapper.insertSelective(sysUser1);//创建用户账号
@@ -95,9 +95,9 @@ public class SysServiceImpl implements SysService {
                 sysUserStudent.setSysCollege(registRequest.getCollegeId());
                 sysUserStudentMapper.insertSelective(sysUserStudent);//创建学生账号
 //                req.sendRedirect("/static/loginH.html");
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
-                throw new BusinessException(Errors.SYSTEM_REQUEST_PARAM_ERROR,"请输入正确的注册信息");
+                throw new BusinessException(Errors.SYSTEM_REQUEST_PARAM_ERROR, "请输入正确的注册信息");
             }
         }
     }

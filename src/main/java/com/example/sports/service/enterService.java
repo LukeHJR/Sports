@@ -13,7 +13,7 @@ import java.util.List;
  * @Author huangjiarui
  * @date: 2018-05-02
  */
-public interface enterService {
+public interface EnterService {
 
     /**
      * 报名

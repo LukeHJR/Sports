@@ -9,11 +9,20 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class SchoolScoreRes {
 
+    @ApiModelProperty(value = "姓名")
+    private String name;
+
     @ApiModelProperty(value = "学号")
-    private String sysUserSid;
+    private String sid;
 
     @ApiModelProperty(value = "项目id")
     private Integer sysProjectId;
+
+    @ApiModelProperty(value = "项目名称")
+    private Integer sysProjectName;
+
+    @ApiModelProperty(value = "学院名称")
+    private Integer sysCollegeName;
 
     @ApiModelProperty(value = "组别 1、女子组 2、男子组")
     private Integer teamType;
@@ -24,12 +33,37 @@ public class SchoolScoreRes {
     @ApiModelProperty(value = "个人成绩")
     private Integer achievement;
 
-    public String getSysUserSid() {
-        return sysUserSid;
+    public Integer getSysProjectName() {
+        return sysProjectName;
     }
 
-    public void setSysUserSid(String sysUserSid) {
-        this.sysUserSid = sysUserSid;
+    public void setSysProjectName(Integer sysProjectName) {
+        this.sysProjectName = sysProjectName;
+    }
+
+    public Integer getSysCollegeName() {
+        return sysCollegeName;
+    }
+
+    public void setSysCollegeName(Integer sysCollegeName) {
+        this.sysCollegeName = sysCollegeName;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public Integer getSysProjectId() {

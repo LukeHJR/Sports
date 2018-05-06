@@ -16,6 +16,7 @@ public interface RoleService {
 
     /**
      * 添加新的管理员
+     *
      * @param
      * @return
      */
@@ -23,20 +24,23 @@ public interface RoleService {
 
     /**
      * 修改管理员权限
+     *
      * @param
      * @return
      */
-    void modifyAdmin(Long id ,List<Integer> roleId);
+    void modifyAdmin(Long id, List<Integer> roleId);
 
     /**
      * 删除管理员
+     *
      * @param
      * @return
      */
-    void  delectAdmin(Long id);
+    void delectAdmin(Long id);
 
     /**
      * 用户权限列表
+     *
      * @param requestBean
      * @return
      */
