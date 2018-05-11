@@ -41,8 +41,15 @@ public class ProjectController {
         return ResponseObjectUtil.success();
     }
 
+    @PostMapping("/deleteProject")
+    @ApiOperation(value = "删除项目" , notes = "id为项目id")
+    public ResponseObject<Void> deleteProject(Long id) {
+        projectService.deleteProject(id);
+        return ResponseObjectUtil.success();
+    }
+
     @PostMapping("/modifyProject")
-    @ApiOperation(value = "添加新的项目", notes = "id为项目id ")
+    @ApiOperation(value = "修改项目信息", notes = "id为项目id ")
     public ResponseObject<Void> modifyProject(ProjectRequest request, Long id) {
         projectService.modifyProject(request, id);
         return ResponseObjectUtil.success();

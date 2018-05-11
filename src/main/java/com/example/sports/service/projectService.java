@@ -29,6 +29,14 @@ public interface ProjectService {
     void addProject(ProjectRequest request);
 
     /**
+     * 删除项目
+     *
+     * @param
+     * @return
+     */
+    void deleteProject(Long id);
+
+    /**
      * 修改项目信息
      *
      * @param

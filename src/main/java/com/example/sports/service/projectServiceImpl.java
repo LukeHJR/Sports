@@ -62,6 +62,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public void deleteProject(Long id) {
+        if (id > 0){
+            sysProjectMapper.deleteByPrimaryKey(id);
+        }
+    }
+
+    @Override
     public void modifyProject(ProjectRequest request, Long id) {
         if (StringUtils.isNotBlank(request.getName()) && StringUtils.isNotBlank(request.getScore())
                 && id > 0) {
